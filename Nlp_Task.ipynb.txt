@@ -1,0 +1,277 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMLWHDENElg72Ut2TdTnTdV",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Nigileshwari2411/Illustro-training/blob/main/Nlp_Task.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "yrH8S7Mo8CGy"
+      },
+      "outputs": [],
+      "source": [
+        "import nltk\n",
+        "from nltk.tokenize import word_tokenize\n",
+        "from nltk.stem import PorterStemmer,LancasterStemmer,SnowballStemmer\n",
+        "from nltk.stem import WordNetLemmatizer\n",
+        "from nltk.corpus import wordnet\n",
+        "from nltk.corpus import stopwords"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "nltk.download('punkt')\n",
+        "nltk.download('punkt_tab')\n",
+        "nltk.download('wordnet')\n",
+        "nltk.download('omw-1.4')\n",
+        "nltk.download('stopwords')"
+      ],
+      "metadata": {
+        "id": "NQoe8qWMASjE",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "3b953188-50b9-4660-c960-4b7707c44d3f"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package punkt to /root/nltk_data...\n",
+            "[nltk_data]   Package punkt is already up-to-date!\n",
+            "[nltk_data] Downloading package punkt_tab to /root/nltk_data...\n",
+            "[nltk_data]   Package punkt_tab is already up-to-date!\n",
+            "[nltk_data] Downloading package wordnet to /root/nltk_data...\n",
+            "[nltk_data]   Package wordnet is already up-to-date!\n",
+            "[nltk_data] Downloading package omw-1.4 to /root/nltk_data...\n",
+            "[nltk_data]   Package omw-1.4 is already up-to-date!\n",
+            "[nltk_data] Downloading package stopwords to /root/nltk_data...\n",
+            "[nltk_data]   Package stopwords is already up-to-date!\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 6
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "text=\"The flower is very beautiful\"\n",
+        "tokens=word_tokenize(text)\n",
+        "print(\"Original Tokens\",tokens)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "RfSjedDYC6H1",
+        "outputId": "a1ae1ac9-1350-4cd5-e1fe-d204992e9787"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Original Tokens ['The', 'flower', 'is', 'very', 'beautiful']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "porter=PorterStemmer()\n",
+        "stemed_words=[porter.stem(word) for word in tokens]\n",
+        "print(\"Porter Stemmer:\",stemmed_words)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "8Pq9j44dDpQe",
+        "outputId": "e844879e-6b0a-42f3-d876-b82e6d7756ce"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Porter Stemmer: ['the', 'flower', 'is', 'veri', 'beauti']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "lemmatizer=WordNetLemmatizer()\n",
+        "lemmatized_words=[lemmatizer.lemmatize(word) for word in tokens]\n",
+        "print(\"Lemmatized Words:\", lemmatized_words)"
+      ],
+      "metadata": {
+        "id": "10ld2dQ8Pd5s",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "ade5c552-8053-451e-cf7a-3df59c80f359"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Lemmatized Words: ['the', 'flower', 'is', 'very', 'beautiful']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "tokens=[word.lower()for word in tokens]\n",
+        "print(\"Lowercased Tokens:\",tokens)"
+      ],
+      "metadata": {
+        "id": "WS30UIMrFIEf",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "0a86a5fa-396b-49db-d226-1f5985bdb6d0"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Lowercased Tokens: ['the', 'flower', 'is', 'very', 'beautiful']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "default_stopwords=set(stopwords.words('english'))\n",
+        "default_filtered_tokens=[word for word in tokens if word not in default_stopwords]\n",
+        "print(\"Tokens after removing stopwords:\",default_filtered_tokens)"
+      ],
+      "metadata": {
+        "id": "PJetyMdPGZyg",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "c8ca11f1-0c64-446c-82ae-c14ee9e128b8"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Tokens after removing stopwords: ['flower', 'beautiful']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "custom_stopwords={\"flower\",\"beautiful\"}\n",
+        "custom_filtered_tokens=[word for word in default_filtered_tokens if word not in custom_stopwords]\n",
+        "print(\"Tokens after removing custom stopwords:\",custom_filtered_tokens)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "v1oD_QQVLhEj",
+        "outputId": "3ab3bece-3293-41d6-97aa-0d7a3c1afeaa"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Tokens after removing custom stopwords: []\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "from nltk import pos_tag\n",
+        "nltk.download('averaged_perceptron_tagger_eng')\n",
+        "pos_tags=pos_tag(custom_filtered_tokens)\n",
+        "print(\"POS Tag:\",pos_tags)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "QdxD5-g1NLvK",
+        "outputId": "d90651fb-1bfb-4535-cc21-b544e33c1262"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package averaged_perceptron_tagger_eng to\n",
+            "[nltk_data]     /root/nltk_data...\n",
+            "[nltk_data]   Unzipping taggers/averaged_perceptron_tagger_eng.zip.\n"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "POS Tag: []\n"
+          ]
+        }
+      ]
+    }
+  ]
+}

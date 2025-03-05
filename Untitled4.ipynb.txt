@@ -1,0 +1,98 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPiGin/1wgh+nx51ONafe4W",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Nigileshwari2411/Inlustro-training-Even-semester/blob/main/Untitled4.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "pip install Deep_Translator"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "MwMtQI_jENQj",
+        "outputId": "f666225e-b5b9-4696-9dfc-6efc36f1bffa"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Collecting Deep_Translator\n",
+            "  Downloading deep_translator-1.11.4-py3-none-any.whl.metadata (30 kB)\n",
+            "Requirement already satisfied: beautifulsoup4<5.0.0,>=4.9.1 in /usr/local/lib/python3.11/dist-packages (from Deep_Translator) (4.13.3)\n",
+            "Requirement already satisfied: requests<3.0.0,>=2.23.0 in /usr/local/lib/python3.11/dist-packages (from Deep_Translator) (2.32.3)\n",
+            "Requirement already satisfied: soupsieve>1.2 in /usr/local/lib/python3.11/dist-packages (from beautifulsoup4<5.0.0,>=4.9.1->Deep_Translator) (2.6)\n",
+            "Requirement already satisfied: typing-extensions>=4.0.0 in /usr/local/lib/python3.11/dist-packages (from beautifulsoup4<5.0.0,>=4.9.1->Deep_Translator) (4.12.2)\n",
+            "Requirement already satisfied: charset-normalizer<4,>=2 in /usr/local/lib/python3.11/dist-packages (from requests<3.0.0,>=2.23.0->Deep_Translator) (3.4.1)\n",
+            "Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.11/dist-packages (from requests<3.0.0,>=2.23.0->Deep_Translator) (3.10)\n",
+            "Requirement already satisfied: urllib3<3,>=1.21.1 in /usr/local/lib/python3.11/dist-packages (from requests<3.0.0,>=2.23.0->Deep_Translator) (2.3.0)\n",
+            "Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.11/dist-packages (from requests<3.0.0,>=2.23.0->Deep_Translator) (2025.1.31)\n",
+            "Downloading deep_translator-1.11.4-py3-none-any.whl (42 kB)\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m42.3/42.3 kB\u001b[0m \u001b[31m2.6 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[?25hInstalling collected packages: Deep_Translator\n",
+            "Successfully installed Deep_Translator-1.11.4\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from deep_translator import GoogleTranslator\n",
+        "def translate_text(text,target_language):\n",
+        "     translator =GoogleTranslator(source='auto',target=target_language)\n",
+        "     return translator.translate(text)\n",
+        "text=\"Hello ,how are you\"\n",
+        "target_language=\"ml\"\n",
+        "translated_text=translate_text(text,target_language)\n",
+        "print(f\"Original:(text)\")\n",
+        "print(f\"Translated ({target_language}):{translated_text}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tyOomP3DFVDg",
+        "outputId": "f1f32ff6-646c-44f6-c4a2-b6a7e603867e"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Original:(text)\n",
+            "Translated (ml):ഹലോ, നിങ്ങൾക്ക് സുഖമാണോ\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
