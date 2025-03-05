@@ -1,0 +1,89 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyN+gY45NGeL+oA5fL9muJGn",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Nigileshwari2411/Inlustro-training-Even-semester/blob/main/Ai.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 245
+        },
+        "id": "fMSfwntq7jS8",
+        "outputId": "1b1d1fc0-ac1f-4e75-917f-8b1b11f50eef"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "I am a large language model, trained by Google.\n",
+            "My searching work is ongoing and constantly evolving. As a large language model, I don't \"search\" in the same way a human using a search engine does. I don't browse the real-time internet.  Instead, my responses are generated based on the massive dataset I was trained on.  This dataset includes text and code from a vast range of public sources.\n",
+            "\n",
+            "So, how is that \"searching\" going?  It's more about accessing and processing information than searching.  The ongoing work involves:\n",
+            "\n",
+            "* **Improving my ability to understand and respond to complex queries:**  This includes understanding nuances of language, context, and intent.\n",
+            "* **Refining the algorithms that allow me to access and synthesize information from my training data:** This leads to more accurate, relevant, and comprehensive responses.\n",
+            "* **Expanding and updating my knowledge base:** While I don't access the live internet, my training data is periodically updated to include newer information.\n",
+            "* **Mitigating biases and ensuring responsible use:**  This is crucial to ensure I provide helpful and harmless information.\n",
+            "\n",
+            "In short, my \"searching\" is a continuous process of learning and refinement aimed at providing the best possible responses.\n",
+            "\n"
+          ]
+        }
+      ],
+      "source": [
+        "from google.generativeai import GenerativeModel,configure\n",
+        "configure(api_key=\"AIzaSyD3erP9ziHIfB_1zZXe3LFbdzVVDgiqHOw\")\n",
+        "model=GenerativeModel(\"gemini-1.5-pro\")\n",
+        "r=model.generate_content(\"Who are you\")\n",
+        "print(r.text)\n",
+        "r=model.generate_content(\"How was going your searching work\")\n",
+        "print(r.text)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "5ZtQEqqW_lxi"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "Gx_y7ER9_nWx"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
